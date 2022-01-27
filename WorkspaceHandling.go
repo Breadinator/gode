@@ -12,11 +12,11 @@ import (
 )
 
 type Workspace struct {
-	Folders  []Folder
-	Settings Settings
+	Folders  []Folder `json:"folders"`
+	Settings Settings `json:"settings"`
 }
 type Folder struct {
-	Path string
+	Path string `json:"path"`
 }
 type Settings struct{}
 
@@ -55,10 +55,6 @@ func WorkspaceContainsDir(workspace *Workspace, workspacePath, dir *string) bool
 
 func SaveJSON(path *string, jsonBytes *[]byte) {
 	jsonString := string(*jsonBytes)
-
-	jsonString = strings.ReplaceAll(jsonString, "\"Path\":", "\"path\":")
-	jsonString = strings.ReplaceAll(jsonString, "\"Folders\":", "\"folders\":")
-	jsonString = strings.ReplaceAll(jsonString, "\"Settings\":", "\"settings\":")
 
 	if file, err := os.Create(*path); err == nil {
 		defer file.Close()
