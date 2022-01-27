@@ -1,3 +1,3 @@
-module github.com/Breadinator/gode
+module github.com/breadinator/gode
 
 go 1.17
